@@ -1,12 +1,12 @@
 package expressivo;
 
 
-public class AddExpression implements Expression {
+public class Addition implements Expression {
     private final Expression leftOperand;
     private final Expression rightOperand;
 
 
-    public AddExpression(Expression leftOperand, Expression rightOperand) {
+    public Addition(Expression leftOperand, Expression rightOperand) {
         this.leftOperand = leftOperand;
         this.rightOperand = rightOperand;
 
@@ -17,7 +17,7 @@ public class AddExpression implements Expression {
 
     private void checkRep() {
         if (leftOperand == null || rightOperand == null) {
-            throw new IllegalArgumentException("AddExpression operands cannot be null");
+            throw new IllegalArgumentException("Addition operands cannot be null");
         }
     }
 
@@ -31,7 +31,7 @@ public class AddExpression implements Expression {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
 
-        AddExpression that = (AddExpression) obj;
+        Addition that = (Addition) obj;
 
         return leftOperand.equals(that.leftOperand) && rightOperand.equals(that.rightOperand);
     }

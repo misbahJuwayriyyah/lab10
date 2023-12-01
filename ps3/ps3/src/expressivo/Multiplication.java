@@ -1,12 +1,12 @@
 package expressivo;
 
 
-public class MultiplyExpression implements Expression {
+public class Multiplication implements Expression {
     private final Expression leftOperand;
     private final Expression rightOperand;
 
 
-    public MultiplyExpression(Expression leftOperand, Expression rightOperand) {
+    public Multiplication(Expression leftOperand, Expression rightOperand) {
         this.leftOperand = leftOperand;
         this.rightOperand = rightOperand;
 
@@ -17,7 +17,7 @@ public class MultiplyExpression implements Expression {
 
     private void checkRep() {
         if (leftOperand == null || rightOperand == null) {
-            throw new IllegalArgumentException("MultiplyExpression operands cannot be null");
+            throw new IllegalArgumentException("Multiplication operands cannot be null");
         }
     }
 
@@ -32,7 +32,7 @@ public class MultiplyExpression implements Expression {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
 
-        MultiplyExpression that = (MultiplyExpression) obj;
+        Multiplication that = (Multiplication) obj;
 
         return leftOperand.equals(that.leftOperand) && rightOperand.equals(that.rightOperand);
     }
