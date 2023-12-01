@@ -28,20 +28,21 @@ public class Main {
      * @throws IOException if there is an error reading the input
      */
     public static void main(String[] args) throws IOException {
+
         final BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         Optional<String> currentExpression = Optional.empty();
-        
+
         while (true) {
             System.out.print("> ");
             final String input = in.readLine();
-            
+
             if (input.isEmpty()) {
                 return; // exits the program
             }
-            
+
             try {
                 final String output;
-                
+
                 if (input.startsWith(DIFFERENTIATE_PREFIX)) {
                     final String variable = parseDifferentiate(input);
                     output = Commands.differentiate(currentExpression.get(), variable);
@@ -55,7 +56,7 @@ public class Main {
                     output = expression.toString();
                     currentExpression = Optional.of(output);
                 }
-                
+
                 System.out.println(output);
             } catch (NoSuchElementException nse) {
                 // currentExpression was empty
