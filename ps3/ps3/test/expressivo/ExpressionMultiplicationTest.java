@@ -1,25 +1,34 @@
-/* Copyright (c) 2015-2016 MIT 6.005 course staff, all rights reserved.
- * Redistribution of original or derived work requires permission of course staff.
- */
 package expressivo;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+/**
+ * Test class for the Multiplication expression in the Expression hierarchy.
+ */
 public class ExpressionMultiplicationTest {
 
+    /**
+     * Ensures that assertions are enabled.
+     */
     @Test(expected = AssertionError.class)
     public void testAssertionsEnabled() {
         assert false;
     }
 
+    /**
+     * Tests the string representation of a constant expression.
+     */
     @Test
     public void testConstantExpressionToString() {
         Expression constantExpression = new ConstantExpression(42.0);
         assertEquals("42.0", constantExpression.toString());
     }
 
+    /**
+     * Tests the string representation of a multiplication expression.
+     */
     @Test
     public void testMultiplyExpressionToString() {
         Expression constant1 = new ConstantExpression(5.0);
@@ -28,6 +37,9 @@ public class ExpressionMultiplicationTest {
         assertEquals("(5.0 * 4.0)", multiplyExpression.toString());
     }
 
+    /**
+     * Tests the string representation of a nested multiplication expression.
+     */
     @Test
     public void testNestedMultiplyExpressionToString() {
         Expression constant1 = new ConstantExpression(3.0);
@@ -38,6 +50,9 @@ public class ExpressionMultiplicationTest {
         assertEquals("((3.0 * 2.0) * 6.0)", multiplyExpression2.toString());
     }
 
+    /**
+     * Tests the string representation of a complex expression involving multiplication.
+     */
     @Test
     public void testComplexExpressionToString() {
         Expression constant1 = new ConstantExpression(2.0);

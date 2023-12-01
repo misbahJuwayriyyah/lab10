@@ -4,19 +4,31 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+/**
+ * Test class for the Expression hierarchy.
+ */
 public class ExpressionTest {
 
+    /**
+     * Ensures that assertions are enabled.
+     */
     @Test(expected = AssertionError.class)
     public void testAssertionsEnabled() {
         assert false;
     }
 
+    /**
+     * Tests the string representation of a constant expression.
+     */
     @Test
     public void testConstantExpressionToString() {
         Expression constantExpression = new ConstantExpression(99.0);
         assertEquals("99.0", constantExpression.toString());
     }
 
+    /**
+     * Tests the string representation of an addition expression.
+     */
     @Test
     public void testAddExpressionToString() {
         Expression constant1 = new ConstantExpression(5.0);
@@ -25,6 +37,9 @@ public class ExpressionTest {
         assertEquals("(5.0 + 2.0)", addExpression.toString());
     }
 
+    /**
+     * Tests the string representation of a nested addition expression.
+     */
     @Test
     public void testNestedAddExpressionToString() {
         Expression constant1 = new ConstantExpression(3.0);
@@ -35,6 +50,9 @@ public class ExpressionTest {
         assertEquals("((3.0 + 6.0) + 1.0)", addExpression2.toString());
     }
 
+    /**
+     * Tests the string representation of a complex expression involving addition.
+     */
     @Test
     public void testComplexExpressionToString() {
         Expression constant1 = new ConstantExpression(8.0);
