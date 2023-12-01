@@ -14,7 +14,6 @@ public class ExpressionMultiplicationTest {
         assert false;
     }
 
-    // TODO: tests for Expression
     @Test
     public void testConstantExpressionToString() {
         Expression constantExpression = new ConstantExpression(42.0);

@@ -1,30 +1,25 @@
 package expressivo;
 
-
 public class Multiplication implements Expression {
-    private final Expression leftOperand;
-    private final Expression rightOperand;
+    private final Expression factor1;
+    private final Expression factor2;
 
+    public Multiplication(Expression factor1, Expression factor2) {
+        this.factor1 = factor1;
+        this.factor2 = factor2;
 
-    public Multiplication(Expression leftOperand, Expression rightOperand) {
-        this.leftOperand = leftOperand;
-        this.rightOperand = rightOperand;
-
-        // Rep invariant: Both leftOperand and rightOperand must not be null.
-        checkRep();
+        validateRepresentation();
     }
 
-
-    private void checkRep() {
-        if (leftOperand == null || rightOperand == null) {
-            throw new IllegalArgumentException("Multiplication operands cannot be null");
+    private void validateRepresentation() {
+        if (factor1 == null || factor2 == null) {
+            throw new IllegalArgumentException("ProductExpression factors cannot be null");
         }
     }
 
     @Override
     public String toString() {
-        // Use parentheses for clarity and to maintain the correct order of operations
-        return "(" + leftOperand.toString() + " * " + rightOperand.toString() + ")";
+        return "(" + factor1.toString() + " * " + factor2.toString() + ")";
     }
 
     @Override
@@ -32,16 +27,15 @@ public class Multiplication implements Expression {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
 
-        Multiplication that = (Multiplication) obj;
+        Multiplication other = (Multiplication) obj;
 
-        return leftOperand.equals(that.leftOperand) && rightOperand.equals(that.rightOperand);
+        return factor1.equals(other.factor1) && factor2.equals(other.factor2);
     }
 
     @Override
     public int hashCode() {
-        int result = leftOperand.hashCode();
-        result = 31 * result + rightOperand.hashCode();
+        int result = factor1.hashCode();
+        result = 31 * result + factor2.hashCode();
         return result;
     }
-
 }

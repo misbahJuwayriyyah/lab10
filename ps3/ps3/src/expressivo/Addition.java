@@ -1,29 +1,25 @@
 package expressivo;
 
-
 public class Addition implements Expression {
-    private final Expression leftOperand;
-    private final Expression rightOperand;
+    private final Expression firstTerm;
+    private final Expression secondTerm;
 
+    public Addition(Expression firstTerm, Expression secondTerm) {
+        this.firstTerm = firstTerm;
+        this.secondTerm = secondTerm;
 
-    public Addition(Expression leftOperand, Expression rightOperand) {
-        this.leftOperand = leftOperand;
-        this.rightOperand = rightOperand;
-
-        // Rep invariant: Both leftOperand and rightOperand must not be null.
-        checkRep();
+        checkRepresentation();
     }
 
-
-    private void checkRep() {
-        if (leftOperand == null || rightOperand == null) {
-            throw new IllegalArgumentException("Addition operands cannot be null");
+    private void checkRepresentation() {
+        if (firstTerm == null || secondTerm == null) {
+            throw new IllegalArgumentException("SumExpression terms cannot be null");
         }
     }
 
     @Override
     public String toString() {
-        return "(" + leftOperand.toString() + " + " + rightOperand.toString() + ")";
+        return "(" + firstTerm.toString() + " + " + secondTerm.toString() + ")";
     }
 
     @Override
@@ -31,16 +27,15 @@ public class Addition implements Expression {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
 
-        Addition that = (Addition) obj;
+        Addition other = (Addition) obj;
 
-        return leftOperand.equals(that.leftOperand) && rightOperand.equals(that.rightOperand);
+        return firstTerm.equals(other.firstTerm) && secondTerm.equals(other.secondTerm);
     }
 
     @Override
     public int hashCode() {
-        int result = leftOperand.hashCode();
-        result = 31 * result + rightOperand.hashCode();
+        int result = firstTerm.hashCode();
+        result = 31 * result + secondTerm.hashCode();
         return result;
     }
-
 }

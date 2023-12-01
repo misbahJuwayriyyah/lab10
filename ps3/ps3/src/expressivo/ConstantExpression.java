@@ -1,21 +1,17 @@
 package expressivo;
 
-
 public class ConstantExpression implements Expression {
     private final double value;
-
 
     public ConstantExpression(double value) {
         this.value = value;
 
         // Rep invariant: None for a constant expression.
-        checkRep();
+        validateRepresentation();
     }
 
-
-
-    private void checkRep() {
-
+    private void validateRepresentation() {
+        // No specific representation validation for a constant expression
     }
 
     @Override
@@ -28,9 +24,9 @@ public class ConstantExpression implements Expression {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
 
-        ConstantExpression that = (ConstantExpression) obj;
+        ConstantExpression other = (ConstantExpression) obj;
 
-        return Double.compare(that.value, value) == 0;
+        return Double.compare(other.value, value) == 0;
     }
 
     @Override
@@ -38,6 +34,4 @@ public class ConstantExpression implements Expression {
         long temp = Double.doubleToLongBits(value);
         return (int) (temp ^ (temp >>> 32));
     }
-
-
 }
